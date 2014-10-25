@@ -1,0 +1,130 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: url('/images/background.jpg') no-repeat 50% 50%;
+  background-size: cover;
+  font-family: 'Arvo', sans-serif;
+  font-size: 4em;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+body, h1, p, li {
+  color: #111;
+}
+
+.leaderboard {
+  margin: 30px;
+}
+
+h1 {
+  font-size: 1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gun {
+  opacity: 0.8;
+  width: 100px;
+}
+
+.gun-2 {
+  transform: rotateY(180deg);
+}
+
+.player-enter {
+  background-color: rgba(255,255,0,0.5);
+  transition: background-color 3s;
+}
+.player-enter.player-enter-active {
+  background-color: rgba(255,255,0,0);
+}
+
+.player-leave {
+  transition: opacity 1s;  
+}
+.player-leave.player-leave-active {
+  opacity: 0;
+}
+
+table {
+  width: 100%;
+}
+
+table td {
+  position: relative;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.sheriff {
+  bottom: 20px;
+  left: 55%;
+  position: absolute;
+  transform: rotate(-6deg);
+  width: 50px;
+}
+
+.deul {
+  border: 3px solid red;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  left: 10px;
+  padding: 5px 8px;
+  position: absolute;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  text-transform: uppercase;
+  top: -28px;
+  transform: rotate(-4deg);
+}
+
+.point {
+  border-radius: 10%;
+  color: white;
+  display: inline-block;
+  font-size: 0.8em;
+  height: 70px;
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 70px;
+}
+
+.point .tint {
+  background-color: rgba(88, 51, 27, 0.2);
+  border-radius: 10%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.point-enter {
+  box-shadow: 0 0 20px 10px yellow;
+  transition: box-shadow 4s;
+}
+.point-enter.point-enter-active {
+  box-shadow: none;
+}
+
+.point-leave {
+  transition: opacity 3s;  
+}
+.point-leave.point-leave-active {
+  opacity: 0;
+}
+
+td.total {
+  text-align: right;
+}
