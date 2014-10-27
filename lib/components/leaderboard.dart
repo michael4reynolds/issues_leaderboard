@@ -8,6 +8,8 @@ import 'package:issues_leaderboard/stores/leaderboard_store.dart';
 import 'package:issues_leaderboard/util/react/css_transition_group.dart';
 
 class _Leaderboard extends react.Component {
+  static const NUMBER_OF_POSITIONS_TO_SHOW = 7;
+  
   getInitialState() => {'positions': []};
   
   DispatchWatcher _watcher;
@@ -47,7 +49,7 @@ class _Leaderboard extends react.Component {
   _renderPositions() {
     var lastPosition;
     
-    return _positions.take(5)
+    return _positions.take(NUMBER_OF_POSITIONS_TO_SHOW)
       .map((position) {
         var isDuel = lastPosition != null && lastPosition.rank == position.rank;
         lastPosition = position;
