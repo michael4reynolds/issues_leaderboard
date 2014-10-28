@@ -47,17 +47,12 @@ class _Leaderboard extends react.Component {
   }
   
   _renderPositions() {
-    var lastPosition;
-    
     return _positions.take(NUMBER_OF_POSITIONS_TO_SHOW)
       .map((position) {
-        var isDuel = lastPosition != null && lastPosition.rank == position.rank;
-        lastPosition = position;
-        
         var avatarCell = [react.img({'src': position.player.user.avatarUrl, 'className': 'avatar'})];
         if (position.rank == 1)
           avatarCell.add(react.img({'key': 'sheriff', 'src': '/images/sheriff.png', 'className': 'sheriff'}));
-        if (isDuel)
+        if (position.isTied)
           avatarCell.add(react.div({'key': 'duel', 'className': 'deul'}, 'Duel'));
         
         return react.table({'key': position.player.user.id},  

@@ -69,10 +69,10 @@ class LeaderboardStore extends SingleStore {
     var lastRank; 
     positions = _players.map((player) {
       rankIndex++;
-      var rank = player.points == lastPoints ? lastRank : rankIndex;
-      lastRank = rank;
+      var isTied = player.points == lastPoints;
+      var rank = lastRank = isTied ? lastRank : rankIndex;
       lastPoints = player.points;
-      return new Position(player, rank);
+      return new Position(player, rank, isTied);
     }).toList();
     positions.sort((a,b) => a.rank.compareTo(b.rank));
   }
@@ -105,8 +105,9 @@ num _labelValue(label) {
 class Position {
   final Player player;
   final num rank;
+  final bool isTied;
   
-  Position(this.player, this.rank);
+  Position(this.player, this.rank, this.isTied);
 }
 
 _sum(List<num> numbers) => numbers.fold(0, (sum, number) => sum = sum + number);
