@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
 }
@@ -54,21 +58,41 @@ table {
   width: 100%;
 }
 
-table td {
-  position: relative;
+.rank-cell {
+  text-align: center;
+  width: 50px;
+}
+
+.avatar-cell {
+  padding: 0 30px 0 20px;
+  width: 150px;
+}
+
+.points-cell {
+  padding: 10px;
+}
+
+.total-cell {
+  text-align: right;
+  width: 300px;
 }
 
 .avatar {
-  border-radius: 50%;
+  position: relative;
   width: 100px;
 }
 
-.sheriff {
-  bottom: 20px;
-  left: 55%;
+.avatar img {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.avatar img.sheriff {
+  bottom: 5px;
+  right: -15px;
   position: absolute;
   transform: rotate(-6deg);
-  width: 50px;
+  width: 60px;
 }
 
 .deul {
@@ -83,7 +107,7 @@ table td {
   position: absolute;
   text-shadow: 0 0 5px rgba(0,0,0,0.5);
   text-transform: uppercase;
-  top: -28px;
+  top: -30px;
   transform: rotate(-4deg);
 }
 
@@ -92,11 +116,11 @@ table td {
   color: white;
   display: inline-block;
   font-size: 0.8em;
-  height: 70px;
+  height: 90px;
   margin: 5px;
   padding: 10px;
   text-align: center;
-  width: 70px;
+  width: 90px;
 }
 
 .point .tint {
@@ -123,8 +147,4 @@ table td {
 }
 .point-leave.point-leave-active {
   opacity: 0;
-}
-
-td.total {
-  text-align: right;
 }

@@ -4,6 +4,7 @@ import 'package:dispatch/dispatch.dart';
 import 'package:github/common.dart';
 import 'package:react/react.dart' as react;
 import 'package:issues_leaderboard/actions.dart' as actions;
+import 'package:issues_leaderboard/components/avatar.dart';
 import 'package:issues_leaderboard/stores/leaderboard_store.dart';
 import 'package:issues_leaderboard/util/react/css_transition_group.dart';
 
@@ -49,21 +50,17 @@ class _Leaderboard extends react.Component {
   _renderPositions() {
     return _positions.take(NUMBER_OF_POSITIONS_TO_SHOW)
       .map((position) {
-        var avatarCell = [react.img({'src': position.player.user.avatarUrl, 'className': 'avatar'})];
-        if (position.rank == 1)
-          avatarCell.add(react.img({'key': 'sheriff', 'src': '/images/sheriff.png', 'className': 'sheriff'}));
-        if (position.isTied)
-          avatarCell.add(react.div({'key': 'duel', 'className': 'deul'}, 'Duel'));
-        
         return react.table({'key': position.player.user.id},  
           react.tr({}, [
-            react.td({'key': 'place', 'width': '5%'}, position.rank),
-            react.td({'key': 'avatar', 'width': '10%'}, avatarCell),
-            react.td({'key': 'points', 'width': '60%'},
+            react.td({'key': 'rank', 'className': 'rank-cell'},
+              position.rank),
+            react.td({'key': 'avatar', 'className': 'avatar-cell'},
+              Avatar({'position': position})),
+            react.td({'key': 'points', 'className': 'points-cell'},
               CSSTransitionGroup({'transitionName': 'point'},
                 _renderIssues(position.player.issues))),
-            react.td({'key': 'total', 'width': '25%', 'className': 'total'},
-                '${position.player.points} ${position.player.points == 1 ? 'point' : 'points'}')
+            react.td({'key': 'total', 'className': 'total-cell'},
+              '${position.player.points} ${position.player.points == 1 ? 'point' : 'points'}')
           ])
         );
       });
