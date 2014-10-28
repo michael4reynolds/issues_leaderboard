@@ -67,14 +67,16 @@ class _Leaderboard extends react.Component {
   }
 
   _renderIssues(List<Issue> issues) {
-    var key = 0;
-    return issues.map((issue) {
+    var sortedIssues = new List<Issue>.from(issues)
+      ..sort((a,b) => a.closedAt.compareTo(b.closedAt));
+
+    return sortedIssues.map((issue) {
       var rotation = issue.number % 9 - 4;
       var style = {
         'background-color': _colorForIssue(issue),
         'transform': 'rotate(${rotation}deg)'
       };
-      return react.div({'key': key++, 'className': 'point', 'style': style}, [
+      return react.div({'key': issue.number, 'className': 'point', 'style': style}, [
         react.div({'key': 'tint', 'className': 'tint'}),
         react.span({'key': 'points'}, pointsForIssue(issue))
       ]);
